@@ -4,11 +4,23 @@ class Ticket:
         self.source = source
         self.destination = destination
 
+    def __repr__(self):
+        return f"source: {self.source}, destination: {self.destination}"
+
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    trip = {}
+    route = []
+    
+    for ticket in tickets:
+        trip[ticket.source] = ticket.destination
+
+    nxt = trip['NONE']
+
+    while nxt != "NONE":
+        route.append(nxt)
+        nxt = trip[nxt] 
+
+    route.append("NONE")
 
     return route
